@@ -5,7 +5,7 @@ var Example_Class = require('../models/example_class');
 router.get('/', function(req, res) {
 	Example_Class.find(function(err, docs) {
 		if (err) {
-			res.status(400).send(err);
+			res.status(400).send();
 		} else {
 			var jsons = [];
 			for (var doc of docs)
@@ -18,7 +18,7 @@ router.get('/', function(req, res) {
 router.get('/:identifier', function(req, res) {
 	Example_Class.findById(req.params.identifier, function(err, doc) {
 		if (err){
-			res.status(400).send(err);
+			res.status(400).send();
 		}
 		else{
 			if(doc)
@@ -32,7 +32,7 @@ router.get('/:identifier', function(req, res) {
 router.head('/:identifier', function(req, res) {
 	Example_Class.findById(req.params.identifier, function(err, doc) {
 		if (err){
-			res.status(400).send(err);
+			res.status(400).send();
 		}
 		else{
 			if(doc)
@@ -65,7 +65,7 @@ router.post('/', function(req, res) {
 			},
 			function(err, doc) {
 				if (err)
-					res.status(400).send(err);
+					res.status(400).send();
 				else
 					res.status(201).send(doc.cleanObject());
 			}
@@ -96,7 +96,7 @@ router.put('/:identifier', function(req, res) {
 		},
 		function(err, doc) {
 			if (err)
-				res.status(400).send(err);
+				res.status(400).send();
 			else
 				res.status(201).send(doc.cleanObject());
 		}
@@ -106,7 +106,7 @@ router.put('/:identifier', function(req, res) {
 router.patch('/:identifier', function(req, res) {
 	Example_Class.findById(req.params.identifier, function(err, doc) {
 		if (err) {
-			res.send(err);
+			res.status(400).send(err);
 		} else {
 			if (doc) {
 				if (req.body.attribute1)
@@ -133,7 +133,7 @@ router.patch('/:identifier', function(req, res) {
 					doc.attribute11 = req.body.attribute11;
 				doc.save(function(err) {
 					if (err){
-						res.status(400).send(err);
+						res.status(400).send();
 					}
 					else{
 						res.status(200).send(doc.cleanObject());
@@ -150,7 +150,7 @@ router.patch('/:identifier', function(req, res) {
 router.delete('/:identifier', function(req, res) {
 	Example_Class.findByIdAndRemove(req.params.identifier, {}, function(err, doc) {
 		if (err)
-			res.status(400).send(err);
+			res.status(400).send();
 		else
 			res.status(204).send();
 	});

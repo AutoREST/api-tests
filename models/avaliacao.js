@@ -3,9 +3,6 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var AvaliacaoSchema = new Schema({
-	_id: {
-		type: Number
-	},
 	matriculaAluno: {
 		type:Number,
 		integer: true,
