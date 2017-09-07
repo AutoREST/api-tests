@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Example_Class = require('../models/example_class');
 
-router.get('/', function(req, res) {
+router.get('/example_class/', function(req, res) {
 	Example_Class.find(function(err, docs) {
 		if (err) {
 			res.status(400).send();
@@ -15,7 +15,7 @@ router.get('/', function(req, res) {
 	});
 });
 
-router.get('/:identifier', function(req, res) {
+router.get('/example_class/:identifier', function(req, res) {
 	Example_Class.findById(req.params.identifier, function(err, doc) {
 		if (err){
 			res.status(400).send();
@@ -29,7 +29,7 @@ router.get('/:identifier', function(req, res) {
 	});
 });
 
-router.head('/:identifier', function(req, res) {
+router.head('/example_class/:identifier', function(req, res) {
 	Example_Class.findById(req.params.identifier, function(err, doc) {
 		if (err){
 			res.status(400).send();
@@ -43,7 +43,7 @@ router.head('/:identifier', function(req, res) {
 	});
 });
 
-router.post('/', function(req, res) {
+router.post('/example_class/', function(req, res) {
 	if (req.body.attribute0) {
 		Example_Class.findByIdAndUpdate(
 			req.body.attribute0, {
@@ -75,7 +75,7 @@ router.post('/', function(req, res) {
 	}
 });
 
-router.put('/:identifier', function(req, res) {
+router.put('/example_class/:identifier', function(req, res) {
 	Example_Class.findByIdAndUpdate(
 		req.params.identifier, {
 			attribute0: req.params.identifier,
@@ -103,7 +103,7 @@ router.put('/:identifier', function(req, res) {
 	);
 });
 
-router.patch('/:identifier', function(req, res) {
+router.patch('/example_class/:identifier', function(req, res) {
 	Example_Class.findById(req.params.identifier, function(err, doc) {
 		if (err) {
 			res.status(400).send(err);
@@ -147,7 +147,7 @@ router.patch('/:identifier', function(req, res) {
 	});
 });
 
-router.delete('/:identifier', function(req, res) {
+router.delete('/example_class/:identifier', function(req, res) {
 	Example_Class.findByIdAndRemove(req.params.identifier, {}, function(err, doc) {
 		if (err)
 			res.status(400).send();

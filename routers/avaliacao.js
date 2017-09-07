@@ -3,7 +3,7 @@ var router = express.Router();
 var Avaliacao = require('../models/avaliacao');
 
 
-router.get('/', function(req, res) {
+router.get('/avaliacao/', function(req, res) {
     var query = {};
     if (req.query.hasOwnProperty("matriculaAluno"))
         query.matriculaAluno = req.query.matriculaAluno;
@@ -25,7 +25,7 @@ router.get('/', function(req, res) {
     });
 });
 
-router.head('/', function(req, res) {
+router.head('/avaliacao/', function(req, res) {
     var query = {};
     if (req.query.hasOwnProperty("matriculaAluno"))
         query.matriculaAluno = req.query.matriculaAluno;
@@ -43,7 +43,7 @@ router.head('/', function(req, res) {
     });
 });
 
-router.post('/', function(req, res) {
+router.post('/avaliacao/', function(req, res) {
     if (req.body.hasOwnProperty("matriculaAluno") && req.body.hasOwnProperty("numTurma")) {
         var query = {
             matriculaAluno: req.body.matriculaAluno,
@@ -72,7 +72,7 @@ router.post('/', function(req, res) {
     }
 });
 
-router.put('/', function(req, res) {
+router.put('/avaliacao/', function(req, res) {
     if (req.query.hasOwnProperty("matriculaAluno") && req.query.hasOwnProperty("numTurma")) {
         var query = {
             matriculaAluno: req.query.matriculaAluno,
@@ -101,7 +101,7 @@ router.put('/', function(req, res) {
     }
 });
 
-router.patch('/', function(req, res) {
+router.patch('/avaliacao/', function(req, res) {
     if (req.query.hasOwnProperty("matriculaAluno") && req.query.hasOwnProperty("numTurma")) {
         var query = {
             matriculaAluno: req.query.matriculaAluno,
@@ -135,7 +135,7 @@ router.patch('/', function(req, res) {
     }
 });
 
-router.delete('/', function(req, res) {
+router.delete('/avaliacao/', function(req, res) {
     if (req.query.hasOwnProperty("matriculaAluno") && req.query.hasOwnProperty("numTurma")) {
         var query = {
             matriculaAluno: req.query.matriculaAluno,

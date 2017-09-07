@@ -24,7 +24,7 @@ var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-    console.log('we\'re connected!');
+    console.log('Connection to MongoDB estabelished');
 });
 
 // app.use(cookieParser())
@@ -39,14 +39,18 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 app.use(methodOverride());
-app.use("/api/example_class", example_class);
-app.use("/api/avaliacao", avaliacao);
+app.use("/api", example_class);
+app.use("/api", avaliacao);
 app.get("/",function(req, res) {
 	res.send("hello");
 });
 
 app.listen(app.get('port'), function() {
 	process.env.NODE_ENV = app.get('env');
-	console.log("Running in " + process.env.NODE_ENV + " mode");
-	console.log("Listening on localhost:" + app.get('port'));
+	// console.log("Running in " + process.env.NODE_ENV + " mode");
+	var baseURL= "http://localhost:" + app.get('port');
+	console.log("Listening on " + baseURL);
+	console.log("Available resources at:");
+	console.log("GET "+baseURL+"/api/example_class/");
+	console.log("GET "+baseURL+"/api/avaliacao/");
 })
